@@ -1,22 +1,63 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Users from "./pages/Users";
+import Groups from "./pages/Groups";
+import Logs from "./pages/Logs";
+import Settings from "./pages/Settings";
 import AuroraBackground from "./components/layout/AuroraBackground";
-import GlassCard from "./components/ui/GlassCard";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
   return (
-    <>
+    <BrowserRouter>
       <AuroraBackground />
-
-      <main className="flex min-h-screen items-center justify-center p-6">
-        <GlassCard>
-          <h1 className="text-4xl font-bold text-white">
-            EasyBoy Panel 🚀
-          </h1>
-
-          <p className="mt-3 text-white/60">
-            Professional Glass Dashboard
-          </p>
-        </GlassCard>
-      </main>
-    </>
+      <Routes>
+        <Route
+          path="/"
+          element={<Login />}
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <ProtectedRoute>
+              <Users />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/groups"
+          element={
+            <ProtectedRoute>
+              <Groups />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/logs"
+          element={
+            <ProtectedRoute>
+              <Logs />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
