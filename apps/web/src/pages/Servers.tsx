@@ -4,7 +4,6 @@ import {
   Server,
   Database,
   Cpu,
-  Activity,
   Wifi
 } from "lucide-react";
 
