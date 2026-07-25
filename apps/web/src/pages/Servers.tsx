@@ -6,7 +6,6 @@ import {
   Cpu,
   Wifi
 } from "lucide-react";
-
 import api from "../api/client";
 
 
