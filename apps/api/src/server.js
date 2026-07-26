@@ -12,6 +12,7 @@ const createLog = require("./utils/createLog");
 const startBot = require("./bot");
 const authMiddleware = require("./middleware/auth");
 const app = express();
+const authRoutes = require("./routes/auth");
 
 app.use(cors({
     origin: [
@@ -20,6 +21,7 @@ app.use(cors({
     ].filter(Boolean)
 }));
 app.use(express.json());
+app.use("/api/auth", authRoutes);
 
 let botStatus = "offline";
 
